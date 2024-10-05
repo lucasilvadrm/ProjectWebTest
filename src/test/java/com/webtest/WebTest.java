@@ -1,8 +1,6 @@
 package com.webtest;
 
-import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
-import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
