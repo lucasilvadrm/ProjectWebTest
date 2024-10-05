@@ -1,5 +1,8 @@
 package com.webtest;
 
+import io.qameta.allure.Allure;
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-@DisplayName("testes do sign up")
+@DisplayName("Testes do sign up")
 public class WebTest {
     private WebDriver driver;
     private Helpers hlp;
@@ -28,6 +31,7 @@ public class WebTest {
 
     @Test
     @DisplayName("Inserir email e Redirecionar para url de Registrar no site")
+    @Description("Realiza o teste no signup")
     public void testSignup() {
         driver.get(Helpers.URL_INDEX);
 
@@ -41,18 +45,22 @@ public class WebTest {
 
     @Test
     @DisplayName("Preencher campos na tela de Registro")
+    @Description("Preenche todo formulário")
     public void testRegisterPageFormSubmission() {
         hlp.fillForm();
     }
 
     @Test
     @DisplayName("Limpar campos do formulário ao clicar no botão register")
-    public void testClearFieldsForm() {
+    @Description("Realiza o teste que verifica se após clicar no botão register, os campos são limpos")
+    public void testClearFieldsForm() throws InterruptedException {
         hlp.fillForm();
 
         hlp.resetForm();
 
-        hlp.validatesIfFormCamposWereCleaned();
+        hlp.validatesIfFormFieldsWereCleaned();
+
+        Thread.sleep(2000);
     }
 
     @AfterEach
